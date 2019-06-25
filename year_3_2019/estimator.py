@@ -61,6 +61,16 @@ def estimate_profit(clf, X, y, false_negative_cost=1, true_negative_gain=1, n_po
 
     return profit, gain, loss, thresholds
 
+
+def get_max_profit(clf, X, y, false_negative_cost=10000, true_negative_gain=1200, n_points=100):
+    
+    profit, gain, loss, thresholds = (
+        estimate_profit(clf, X, y, false_negative_cost=false_negative_cost, 
+                        true_negative_gain=true_negative_gain, n_points=n_points)
+    )
+    
+    return max(profit)
+
 #
 #from sklearn.calibration import calibration_curve
 # plt.figure(figsize=(10, 10))
